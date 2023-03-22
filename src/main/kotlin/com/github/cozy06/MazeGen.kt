@@ -1,31 +1,7 @@
+import com.github.cozy06.MazePrint
 import java.util.ArrayList
 
 class MazeGen {
-    private fun printMaze(maze: Array<IntArray>, size: Int) {
-        for (i: Int in 1..size+2) {
-            print("■ ")
-        }
-        println()
-        val message = "Hello, world!"
-        for (row in maze) {
-            print("■ ")
-            for (col in row) {
-                when (col) {
-                    0 -> print("□ ")
-                    1 -> print("■ ")
-                    2 -> print("⊞ ")
-                    3 -> print("⊠ ")
-                }
-            }
-            print("■")
-            println()
-        }
-        for (i: Int in 1..size+2) {
-            print("■ ")
-        }
-        println()
-    }
-
     private fun isGoodPath(maze: Array<IntArray>, point: IntArray): Boolean {
         if (point[0] < 0 || point[0] >= maze.size || point[1] < 0 || point[1] >= maze[0].size) {
             return false
@@ -69,7 +45,7 @@ class MazeGen {
 
 
         if(print) {
-            printMaze(GeneratedMaze, size)
+            MazePrint().printMaze(GeneratedMaze, size)
         }
 
         return GeneratedMaze

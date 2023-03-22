@@ -1,30 +1,6 @@
-class MazeSol {
+import com.github.cozy06.MazePrint
 
-    private fun printMaze(maze: Array<IntArray>, size: Int) {
-        for (i: Int in 1..size+2) {
-            print("■ ")
-        }
-        println()
-        val message = "Hello, world!"
-        for (row in maze) {
-            print("■ ")
-            for (col in row) {
-                when (col) {
-                    0 -> print("□ ")
-                    1 -> print("■ ")
-                    2 -> print("⊞ ")
-                    3 -> print("⊠ ")
-                    -1 -> print("⊡ ")
-                }
-            }
-            print("■")
-            println()
-        }
-        for (i: Int in 1..size+2) {
-            print("■ ")
-        }
-        println()
-    }
+class MazeSol {
 
     fun dfs(maze: Array<IntArray>, x: Int, y: Int, visited: MutableSet<Pair<Int, Int>>, path: MutableList<Pair<Int, Int>>): Boolean {
         // check if current position is the end point
@@ -74,7 +50,7 @@ class MazeSol {
                     println("(${p.first}, ${p.second})")
                     maze[p.first][p.second] = -1
                     solvedMaze += maze
-                    printMaze(maze, solvedMaze[0].size)
+                    MazePrint().printMaze(maze, solvedMaze[0].size)
                 }
             } else {
                 println("No path found")
